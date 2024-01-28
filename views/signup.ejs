@@ -1,0 +1,96 @@
+<%- include("partials/header1.ejs") %>
+
+
+
+
+
+<main id="main">
+    <h1 class="contactus">User's Registration / Login  </h1>
+    <section id="contact" class="contact" style="margin: 4%;">
+      <div class="container-fluid" data-aos="fade-up">
+      <div class="row" >
+        <div class="row gy-4 mt-4 ">
+          <div class=" col-sm-4 mt-4">
+
+            <div class="info-item d-flex">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h4>Location:</h4>
+                <p>Dr. D.Y. Patil Institute of Engineering, Management and Research, Ravet Village Road, Gurudwara Colony, Nigdi, Pimpri-Chinchwad, Maharashtra</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h4>Email:</h4>
+                <p>thephoenixes54@gmail.com</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex">
+              <i class="bi bi-pho ne flex-shrink-0"></i>
+              <div>
+                <h4>Call:</h4>
+                <p>+91-9356708042</p>
+              </div>
+            </div><!-- End Info Item -->
+
+          </div>
+
+          
+          
+          
+          <div class="col-sm-8 mt-4 ">
+
+            <div class="container   shadow-lg p-5 " style="width:50%;">
+              <h2 class="text-center">Registration Form</h2>
+              <form action="/empdata" method="post">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Username</label>
+                  <input type="text" name="name" class="form-control" id="exampleInputuser1" aria-describedby="emailHelp" autocomplete="off">
+                  <small id="emailHelp" class="form-text text-muted"> </small>
+                </div>
+          
+          
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" name="email"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"autocomplete="off">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+          
+                  <div class="form-group">
+                    <label for="exampleInputphone1">Phone</label>
+                    <input type="number" name="phone" class="form-control" id="exampleInputphone1" aria-describedby="emailHelp" autocomplete="off">
+                    <small id="emailHelp" class="form-text text-muted"> </small>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    <input type="password" name="cpassword" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button> 
+                  <br><br>
+                  <p>Already have an account? <a href="/login">Sign in</a></p>
+                </form>
+              </div>
+
+          </div>
+
+ 
+           
+
+        </div>
+      </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+<%- include("partials/footer1.ejs") %>
