@@ -1,0 +1,24 @@
+[
+    {
+      "Brand": "Apple",
+      "Model": "iPhone X",
+      "Age": 2,
+      "Condition": "excellent",
+      "Price": 30000
+    },
+    {
+      "Brand": "Samsung",
+      "Model": "Galaxy S10",
+      "Age": 3,
+      "Condition": "good",
+      "Price": 25000
+    },
+    {
+      "Brand": "Dell",
+      "Model": "XPS 13",
+      "Age": 1, 
+      "Condition": "fair",
+      "Price": 70000
+    }
+  ]
+  

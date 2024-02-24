@@ -29,7 +29,16 @@
   <link href="assets/css/main.css" rel="stylesheet">
   <link rel="stylesheet" href="styles/style.css">
    
-     
+  <style>
+    .row {
+  display: flex;
+}
+
+.col-md-6 {
+  flex: 1;
+}
+
+  </style>
 </head>
 
 <body>
@@ -72,47 +81,100 @@
     </div>
   </header><!-- End Header -->
  
+ 
 
-<section id="portfolio" class="portfolio sections-bg">
-  <div class="container" data-aos="fade-up">
-    <div class="section-header">
-      <h1>Recycle E-Waste</h1>
-      <!-- <p>Quam sed id excepturi ccusantium dolorem ut quis dolores nisi llum nostrum enim velit qui ut et autem uia reprehenderit sunt deleniti</p> -->
-    </div>
 
-    <div
-      class="portfolio-isotope"
-      data-portfolio-filter="*"
-      data-portfolio-layout="masonry"
-      data-portfolio-sort="original-order"
-      data-aos="fade-up"
-      data-aos-delay="100"
-      class="container-fixed"
-    >
-      <h1>Find Nearest Location</h1>
+  <div class="container">
+    <div class="row" style="display: flex;">
+      <div class="col-md-6" style="padding: 0; margin: 0;">
+        <section id="portfolio" class="portfolio sections-bg" style="height: 100%;">
+          <div class="container" data-aos="fade-up">
+            <div class="section-header">
+              <h1>Recycle E-Waste</h1>
+            </div>
+  
+            <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100" class="container-fixed">
+              <h1>Find Nearest Location</h1>
+              <p>Click the button below to find the nearest location based on your current location:</p>
+              <div class="container-fixed">
+                <button onclick="findNearestLocation()">Find Nearest Location</button>
+                <!-- <button onclick="initMap(); findNearestLocation();">Find Nearest Location</button> -->
 
-      <p>
-        Click the button below to find the nearest location based on your
-        current location:
-      </p>
-
-      <div class="container-fixed">
-        <button onclick="findNearestLocation()">Find Nearest Location</button>
+              </div>
+              <div id="result"></div>
+            </div>
+          </div>
+        </section>
       </div>
 
-      <div id="result"></div>
+      
+      
+      <div class="col-md-6" style="padding: 0; margin: 0;">
+        <section id="portfolio" class="portfolio sections-bg" style="height: 100%;"> 
+          <h1>E-Waste Price Estimation</h1>
+          <form id="ewasteForm">
+            <!-- <label for="image">Upload Image of E-Waste:</label>
+            <input type="file" id="image" name="image" accept="image/*" required><br><br> -->
+  
+            <label for="age">How old is your device?</label>
+            <input type="number" id="age" name="age" min="1" max="10" required><br><br>
 
-      <script src="/js/script.js"></script>
-    </div>
-    <br><br>
+            <label for="brand">What is brand of your device?</label>
+            <input type="text" id="brand" name="brand" required><br><br>
 
-     
+            <label for="Model">What is Model of your device?</label>
+            <input type="text" id="Model" name="Model" required><br><br>
+  
+            <label for="purchasePrice">What was the price at the time of purchase (in INR)? (0 - 9,999,999)</label>
+            <input type="number" id="purchasePrice" name="purchasePrice" min="0" max="9999999" required><br><br>
+  
+            <label for="quality">Rate the quality of the product (1-5):</label>
+            <input type="number" id="quality" name="quality" min="1" max="5" required><br><br>
+  
+            <label for="damages">Does the product have any damages? (1-5)</label>
+            <input type="number" id="damages" name="damages" min="1" max="5" required><br><br>
+  
+            <button type="button" onclick="calculatePrice()">Calculate Price Range</button> 
+         </form>
+         <div id="priceRange"></div>
 
-  </div>
+        </section>
+
  
-</section>
+
+  <!-- <h1>Electronic Device Cost Predictor</h1>
+    <div>
+        <label for="age">Age (in years):</label>
+        <input type="number" id="age" name="age" min="0" required>
+    </div>
+    <div>
+        <label for="condition">Condition:</label>
+        <select id="condition" name="condition" required>
+            <option value="excellent">Excellent</option>
+            <option value="good">Good</option>
+            <option value="fair">Fair</option>
+            <option value="poor">Poor</option>
+        </select>
+    </div>
+    <div>
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" required>
+    </div>
+    <div>
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required>
+    </div>
+    <button onclick="predictCost()">Predict Cost</button>
+    <div id="result"></div>
+ -->
 
 
+      </div>
+    </div>
+  </div>
+   
+
+   
 
 
 <!-- ======= Footer ======= -->
@@ -186,7 +248,7 @@
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
-
+<script src="/js/script.js"></script>
 
 
  

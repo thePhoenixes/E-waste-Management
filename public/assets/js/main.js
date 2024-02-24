@@ -312,3 +312,323 @@ setInterval(rotateQuote, 5000);
   });
 
 });
+
+
+
+
+// price predictor
+
+function calculatePrice() {
+  const age = parseInt(document.getElementById('age').value);
+  const purchasePrice = parseInt(document.getElementById('purchasePrice').value);
+  const quality = parseInt(document.getElementById('quality').value);
+  const damages = parseInt(document.getElementById('damages').value);
+
+  if (purchasePrice < 0 || purchasePrice > 9999999) {
+      alert("Please enter a purchase price between 0 and 9,999,999.");
+      return;
+  }
+
+  let basePrice = 0;
+
+//   if (age <= 2) {
+//       basePrice = purchasePrice * 0.4; // 40% of purchase price for devices less than or equal to 2 years old
+//   } 
+//   else if (age <= 5) {
+//       basePrice = purchasePrice * 0.3; // 30% of purchase price for devices between 2 and 5 years old
+//   } 
+
+//   else if (age <=7) {
+//     basePrice = purchasePrice * 0.28; // 30% of purchase price for devices between 2 and 5 years old
+// } 
+// else if (age <= 8) {
+//   basePrice = purchasePrice * 0.25; // 30% of purchase price for devices between 2 and 5 years old
+// }
+// else if (age <= 9) {
+//   basePrice = purchasePrice * 0.22; // 30% of purchase price for devices between 2 and 5 years old
+// } 
+
+
+//   else {
+//       basePrice = purchasePrice * 0.2; // 20% of purchase price for devices older than 5 years
+//   }
+
+basePrice = purchasePrice / age;
+
+
+  let qualityMultiplier = 0;
+  let damagesMultiplier = 0;
+
+  switch (quality) {
+      case 1:
+          qualityMultiplier = 0.2;
+          break;
+      case 2:
+          qualityMultiplier = 0.4;
+          break;
+      case 3:
+          qualityMultiplier = 0.6;
+          break;
+      case 4:
+          qualityMultiplier = 0.8;
+          break;
+      case 5:
+          qualityMultiplier = 1;
+          break;
+  }
+
+  switch (damages) {
+      case 1:
+          damagesMultiplier = 1;
+          break;
+      case 2:
+          damagesMultiplier = 0.8;
+          break;
+      case 3:
+          damagesMultiplier = 0.6;
+          break;
+      case 4:
+          damagesMultiplier = 0.4;
+          break;
+      case 5:
+          damagesMultiplier = 0.2;
+          break;
+  }
+
+  let minPrice = basePrice * qualityMultiplier;
+  let maxPrice = basePrice * (qualityMultiplier + damagesMultiplier);
+
+  document.getElementById('priceRange').innerText = `Estimated Price Range: INR ${minPrice.toFixed(2)} - INR ${maxPrice.toFixed(2)}`;
+}
+
+
+
+
+
+
+
+
+//chatbot
+
+
+
+const chatHistory = [];
+const synth = window.speechSynthesis;
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+let recognitionStartedByButton = false;
+
+recognition.lang = 'en-US';
+
+recognition.onresult = function(event) {
+    if (!recognitionStartedByButton) {
+        return; // Ignore the result if recognition wasn't started by the button
+    }
+
+    const userInput = event.results[0][0].transcript;
+    const chatContainer = document.getElementById("chat");
+    const userMessage = `<div><strong>You:</strong> ${userInput}</div>`;
+    chatContainer.innerHTML += userMessage;
+
+    // Add user input to chat history
+    chatHistory.push(userInput);
+
+    // Process user input
+    const botResponse = getBotResponse(userInput);
+    const botMessage = `<div><strong>Bot:</strong> ${botResponse}</div>`;
+    chatContainer.innerHTML += botMessage;
+
+    // Speak the bot response
+    speak(botResponse);
+
+    // Reset the flag after processing the input
+    recognitionStartedByButton = false;
+};
+
+document.getElementById('voiceButton').addEventListener('click', function() {
+    recognitionStartedByButton = true;
+    recognition.start();
+});
+
+function sendMessage() {
+    const userInput = document.getElementById("userInput").value;
+    const chatContainer = document.getElementById("chat");
+    const userMessage = `<div><strong>You:</strong> ${userInput}</div>`;
+    chatContainer.innerHTML += userMessage;
+
+    // Add user input to chat history
+    chatHistory.push(userInput);
+
+    // Set the flag to false to prevent speaking
+    recognitionStartedByButton = false;
+
+    // Process user input
+    const botResponse = getBotResponse(userInput);
+    const botMessage = `<div><strong>Bot:</strong> ${botResponse}</div>`;
+    chatContainer.innerHTML += botMessage;
+}
+
+function getBotResponse(userInput) {
+    if (userInput.toLowerCase().includes("recycle" && "dispose")) {
+        return "To recycle e-waste in your community, locate nearby recycling facilities or events. Proper recycling involves data wiping and separating components. Look for programs that accept various electronic devices and consider special disposal requirements. Valuable materials like metals and plastics can be recovered through recycling. Recycling old electronics reduces pollution, conserves resources, and supports a circular economy, often with incentives available.";
+    }
+    else if (userInput.toLowerCase().includes("e-waste" && "pollution")) {
+      return "E-waste contributes to pollution through improper disposal methods, releasing hazardous chemicals into the environment. When electronic devices are discarded in landfills or incinerated, they emit toxins such as lead, mercury, and cadmium, contaminating soil, water, and air. Responsible e-waste management practices are crucial to mitigate pollution and safeguard environmental health.";
+    }
+
+    else if (userInput.toLowerCase().includes("e-waste" && "circular economy")) {
+      return "E-waste poses challenges to the circular economy, but also offers opportunities for resource recovery and sustainability. Through proper recycling and reuse, e-waste can be transformed into valuable materials, contributing to the circular economy by reducing waste, conserving resources, and minimizing environmental impact. Embracing circular principles in e-waste management is essential for a more sustainable future.";
+    }
+
+    else if (userInput.toLowerCase().includes("e-waste" && "collection programs"
+      )) {
+      return "E-waste collection programs play a vital role in responsible waste management and resource conservation. These programs provide convenient and accessible avenues for individuals and businesses to dispose of their electronic devices safely. By participating in e-waste collection programs, communities can promote recycling, reduce landfill waste, and mitigate the environmental impacts of electronic consumption.";
+    }
+
+    else if (userInput.toLowerCase().includes("e-waste" && "electronic recycling facilities"
+      )) {
+      return "Electronic recycling facilities play a crucial role in the sustainable management of e-waste. These specialized facilities utilize advanced technologies to safely process and recycle discarded electronic devices. By extracting valuable materials and components from e-waste, electronic recycling facilities contribute to resource conservation, pollution prevention, and the promotion of a circular economy, fostering a more sustainable approach to electronic consumption.";
+    }
+
+
+    else if (userInput.toLowerCase().includes("e-waste" || "electronic waste"
+      )) {
+      return "E-waste, or electronic waste, refers to discarded electronic devices such as computers, smartphones, and televisions that are no longer in use and require proper disposal or recycling to prevent environmental contamination and promote resource recovery.";
+    }
+
+
+    else if (userInput.toLowerCase().includes("e-waste" && "responsible disposal"
+      )) {
+      return "Responsible disposal of e-waste is essential for protecting the environment and human health. By properly recycling or disposing of electronic devices, we can prevent hazardous substances from contaminating soil, water, and air. Adopting sustainable practices and supporting e-waste management initiatives ensures that we minimize the negative impacts of electronic consumption and contribute to a cleaner, healthier planet.";
+    }
+
+
+    else if (userInput.toLowerCase().includes("e-waste" && "reuse"
+      )) {
+      return "Reusing e-waste is an effective way to reduce its environmental impact and extend the lifespan of electronic devices. By refurbishing or repurposing old electronics, we can minimize the need for new manufacturing, conserve resources, and decrease electronic waste generation. Embracing reuse practices promotes sustainability and contributes to a more circular economy, where products are valued and utilized for as long as possible.";
+    }
+
+    else if (userInput.toLowerCase().includes("Toxic substances" && "environmental impact"
+      )) {
+      return "Toxic substances in e-waste, such as lead, mercury, and brominated flame retardants, pose serious environmental threats if improperly handled. These chemicals can contaminate soil, water, and air, harming ecosystems and human health. Proper disposal and recycling of e-waste are essential to mitigate these impacts, preventing pollution and conserving natural resources.";
+    }
+
+    else if (userInput.toLowerCase().includes("Hazardous materials" && "toxic substances"
+      )) {
+      return "E-waste contains hazardous materials and toxic substances, including lead, mercury, cadmium, and brominated flame retardants, which pose serious environmental and health risks if not handled properly. Safeguarding against the release of these substances through responsible disposal and recycling practices is crucial for protecting both ecosystems and human well-being.";
+    }
+
+    else if (userInput.toLowerCase().includes("dispose")) {
+      return "Safely dispose of e-waste by researching local recycling facilities or collection events. Follow proper guidelines for data erasure and component separation before dropping off electronics. Regulations govern e-waste disposal to mitigate environmental harm. Avoid improper disposal to prevent pollution and conserve resources. Responsible disposal options ensure secure data removal and minimize negative environmental impacts, supporting a sustainable approach to waste management.";
+    }
+
+//16
+    else if (userInput.toLowerCase().includes("Environmental impact")) {
+      return "The environmental impact of e-waste is significant, with improper disposal leading to pollution of soil, water, and air due to the release of hazardous substances such as lead, mercury, and brominated flame retardants. Additionally, e-waste contributes to the depletion of natural resources and exacerbates electronic waste management challenges, highlighting the urgent need for effective recycling and sustainable disposal practices.";
+    }
+
+
+    else if (userInput.toLowerCase().includes("Toxic substances")) {
+      return "Toxic substances in e-waste, such as lead, mercury, and brominated flame retardants, pose serious environmental threats if improperly handled. These chemicals can contaminate soil, water, and air, harming ecosystems and human health. Proper disposal and recycling of e-waste are essential to mitigate these impacts, preventing pollution and conserving natural resources.";
+    }
+
+    else if (userInput.toLowerCase().includes("Hazardous materials")) {
+      return "Hazardous materials found in e-waste, such as lead, mercury, and cadmium, present significant environmental and health risks if not properly managed. Responsible disposal and recycling of electronic devices are essential to prevent the release of these hazardous substances into the environment, safeguarding both ecosystems and human well-being.";
+    }
+    else if (userInput.toLowerCase().includes("Pollution")) {
+      return "When electronic devices are improperly disposed of or recycled, they release harmful substances such as lead, mercury, cadmium, and other toxic materials into the environment. These pollutants can contaminate soil, water, and air, posing serious health risks to humans and wildlife. Additionally, the improper handling of e-waste can lead to the release of greenhouse gases, contributing to climate change.";
+    }
+
+    else if (userInput.toLowerCase().includes("Circular Economy")) {
+      return "In a circular economy, resources are kept in use for as long as possible, with the aim of minimizing waste and maximizing the value of products and materials through reuse, repair, refurbishment, and recycling. When applied to e-waste, this means designing electronic devices for durability, repairability, and recyclability, as well as establishing efficient systems for collection, refurbishment, and recycling of discarded electronics.";
+    }
+
+    else if (userInput.toLowerCase().includes("Resource Recovery")) {
+      return "Resource recovery plays a crucial role in managing e-waste effectively. Electronic waste contains various valuable materials such as precious metals like gold, silver, and platinum, as well as rare earth elements, copper, and other metals that can be recovered and reused. Resource recovery processes, such as dismantling, shredding, sorting, and extraction techniques, are employed to recover these valuable materials from e-waste.";
+    }
+
+    else if (userInput.toLowerCase().includes("Sustainable Practices")) {
+      return "Implementing sustainable practices in e-waste management involves prioritizing responsible disposal, recycling, and resource recovery methods. By promoting circular economy principles, such as product stewardship and extended producer responsibility, communities can minimize environmental impact, conserve resources, and reduce pollution associated with electronic waste disposal.";
+    }
+
+    else if (userInput.toLowerCase().includes("Collection Programs")) {
+      return "Collection programs for e-waste are essential for facilitating the proper disposal and recycling of electronic devices at the end of their life cycle. These programs provide individuals and businesses with convenient and accessible options for safely disposing of their old or unwanted electronics, preventing them from ending up in landfills or being improperly disposed of.";
+    }
+
+    else if (userInput.toLowerCase().includes("Electronic recycling facilities")) {
+      return "Electronic recycling facilities play a critical role in the responsible management of e-waste. These facilities are specialized centers equipped to handle the collection, processing, and recycling of electronic devices at the end of their life cycle.";
+    }
+
+    else if (userInput.toLowerCase().includes("Electronic Devices")) {
+      return "Electronic devices that fall under the e-waste category include computers, laptops, smartphones, tablets, televisions, printers, and other consumer electronics. These devices become e-waste when they reach the end of their useful life and require proper disposal or recycling to prevent environmental pollution and conserve valuable resources.";
+    }
+
+    else if (userInput.toLowerCase().includes("Responsible disposal")) {
+      return "One of the most effective ways to responsibly dispose of e-waste is through recycling at certified electronic recycling facilities. These facilities are equipped to safely dismantle, process, and recycle electronic devices, recovering valuable materials and preventing them from ending up in landfills.";
+    }
+
+    else if (userInput.toLowerCase().includes("Reuse")) {
+      return "Reuse is a fundamental principle in the sustainable management of e-waste. Instead of immediately discarding electronic devices when they become obsolete or unwanted, prioritizing reuse can significantly reduce the environmental impact of electronic waste.";
+    }
+
+    else if (userInput.toLowerCase().includes("Electronic product stewardship")) {
+      return "Electronic product stewardship refers to the responsibility that manufacturers, retailers, and other stakeholders have for managing electronic products throughout their entire lifecycle, from production to disposal. This concept emphasizes the need for all parties involved in the electronics industry to take proactive measures to minimize the environmental and social impacts of electronic products, including e-waste.";
+    }
+
+    else if (userInput.toLowerCase().includes("Landfills")) {
+      return "E-waste poses a significant challenge for landfills due to its volume and hazardous components. Improper disposal of electronic devices in landfills can lead to leaching of toxic substances into soil and groundwater, posing environmental and health risks. Implementing proper e-waste management practices is essential to reduce the burden on landfills and mitigate environmental damage.";
+    }
+
+    else if (userInput.toLowerCase().includes("Extended producer responsibility")) {
+      return "Extended Producer Responsibility (EPR) is a policy approach that places the responsibility for the end-of-life management of products on the manufacturers, rather than solely on consumers or governments. In the context of e-waste, EPR requires electronics manufacturers to take responsibility for the entire lifecycle of their products, including collection, recycling, and proper disposal when they reach the end of their useful life.";
+    }
+
+
+     else if (userInput.toLowerCase().includes("recycle")){
+        return "E-waste recycling in your community starts with researching local recycling facilities that accept electronic devices. Follow proper steps, such as data erasure and component separation, before dropping off your e-waste. Many programs offer incentives for recycling, and materials like metals, plastics, and glass can be recovered. Recycling e-waste conserves resources, reduces pollution, and supports a sustainable circular economy.";
+    }
+    else if (userInput.toLowerCase().includes("dispose")) {
+        return "E-waste should be properly disposed of to avoid environmental damage.";
+    }
+    else {
+        return "I'm sorry, I don't understand. Can you please rephrase?";
+    }
+}
+
+function speak(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    synth.speak(utterance);
+}
+
+recognition.onstart = function() {
+    document.getElementById("recognising").style.display = "block";
+};
+
+recognition.onend = function() {
+    document.getElementById("recognising").style.display = "none";
+};
+
+
+
+
+
+
+
+async function predictCost() {
+  const age = document.getElementById('age').value;
+  const condition = document.getElementById('condition').value;
+  const brand = document.getElementById('brand').value;
+  const model = document.getElementById('model').value;
+
+  const response = await fetch('/predict', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ age, condition, brand, model })
+  });
+
+  const data = await response.json();
+  document.getElementById('result').innerText = `Predicted cost: ₹${data.cost}`;
+}
+

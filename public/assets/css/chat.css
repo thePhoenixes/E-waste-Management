@@ -1,0 +1,116 @@
+/* Center the chatbot container */
+.chat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh; /* Adjust height as needed */
+   
+}
+
+/* Style the chatbot content */
+ 
+.chat {
+  padding: 50px 20px; /* Increase padding */
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.container1 {
+  
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-grow: 1; /* Allow the chat area to grow */
+  overflow-y: auto; /* Add scroll for overflow */
+}
+
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn1 {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn1:hover {
+  background-color: #0056b3;
+}
+
+#voiceButton {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Padding */
+  font-size: 16px; /* Font size */
+  border: none; /* No border */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+#voiceButton:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+
+.chat-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container1 {
+  width: 50%; /* Change the width as needed */
+  margin: 0 auto; /* Center the container horizontally */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+
+.chat-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.chatbot-img {
+  float: left;
+  margin-right: 10px;
+  width: 50px; /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+}
+
+.chat-box {
+  flex: 1;
+  max-width: 400px; /* Adjust the width as needed */
+}
+
+#chat {
+  max-height: 300px; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+#userInput {
+  width: 80%;
+  margin-right: 5px;
+}
+
+#voiceButton,
+.btn1 {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#recognising {
+  margin-bottom: 10px;
+}

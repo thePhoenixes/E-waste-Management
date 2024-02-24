@@ -30,6 +30,8 @@ export const empCollection = mongoose.model('empcollection', empSchema);
 
 
 
+
+
 // //for collection
 // const facSchema = new mongoose.Schema({
 //   name: {
@@ -132,3 +134,17 @@ const feedSchema = new mongoose.Schema({
 });
 
 export const feedCollection = mongoose.model('feedcollection', feedSchema);
+
+
+// In model.js
+// const facilityCentersSchema = new mongoose.Schema({
+//   // Define your schema fields here
+//   // For example, latitude and longitude fields
+//   latitude: { type: Number, required: true },
+//   longitude: { type: Number, required: true },
+//   // Other fields as needed
+// });
+
+// const FacilityCenters = mongoose.model("FacilityCenters", facilityCentersSchema);
+
+// export { FacilityCenters };

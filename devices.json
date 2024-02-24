@@ -1,0 +1,23 @@
+[
+    {
+        "brand": "Apple",
+        "model": "iPhone 11",
+        "age": 1,
+        "condition": "excellent",
+        "price": 600
+    },
+    {
+        "brand": "Samsung",
+        "model": "Galaxy S10",
+        "age": 2,
+        "condition": "good",
+        "price": 400
+    },
+    {
+        "brand": "Google",
+        "model": "Pixel 4",
+        "age": 1,
+        "condition": "excellent",
+        "price": 500
+    }
+]
