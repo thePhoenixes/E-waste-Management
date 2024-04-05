@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 
 
 
-// Import the specific named export from model.js
+//Import the specific named export from model.js
 import { empCollection } from "./model/model.js"; // Adjust the import as needed
 import { faciCollection } from "./model/model.js"; // Adjust the import as needed
 import { delCollection } from "./model/model.js"; // Adjust the import as needed
@@ -189,7 +189,13 @@ app.get("/home", (req, res) => {
 });
 
 
+
+
+
+
+
 //After login user will ridirct to this page
+
 app.get("/homeuser", (req, res) => {
   res.render("homeuser.ejs");
 });
@@ -266,6 +272,7 @@ app.get("/card5", (req, res) => {
 app.get("/card6", (req, res) => {
   res.render("card6.ejs");
 });
+
 
 //cards in myprofile
 app.get("/mcard1", (req, res) => {
@@ -627,3 +634,4 @@ app.post("/feedback", async(req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+

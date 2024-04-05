@@ -1451,3 +1451,10 @@ section {
   text-align: center;
   padding: 30px;
 }
+
+
+.sendmsg{
+  background-color:#009282;
+  color: white;
+ border-color: #009282;
+}
