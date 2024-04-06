@@ -23,10 +23,15 @@ const port = 3000;
 
 
 
+
+
+
+
+
 //Blog app
+
 const API_URL = "http://localhost:4000";
 
-// Your existing routes and middleware
 
 // Route to render the main page
 
@@ -103,7 +108,6 @@ app.get("/api/posts/delete/:id", async (req, res) => {
     res.status(500).json({ message: "Error deleting post" });
   }
 });
-
 
 
 

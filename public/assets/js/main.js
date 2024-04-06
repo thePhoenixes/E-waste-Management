@@ -566,7 +566,7 @@ function sendMessage() {
 }
 
 function getBotResponse(userInput) {
-    if (userInput.toLowerCase().includes("recycle" && "dispose")) {
+    if (userInput.toLowerCase().includes("recycle" && "dispose" && "e-waste")) {
         return "To recycle e-waste in your community, locate nearby recycling facilities or events. Proper recycling involves data wiping and separating components. Look for programs that accept various electronic devices and consider special disposal requirements. Valuable materials like metals and plastics can be recovered through recycling. Recycling old electronics reduces pollution, conserves resources, and supports a circular economy, often with incentives available.";
     }
     else if (userInput.toLowerCase().includes("e-waste" && "pollution")) {
@@ -704,6 +704,104 @@ recognition.onstart = function() {
 recognition.onend = function() {
     document.getElementById("recognising").style.display = "none";
 };
+
+
+
+
+
+
+
+//Floating chatbot
+// function initFloatingChatbot() {
+//   const chatbotWidget = document.getElementById('chatbotWidget');
+//   const toggleChatbotButton = document.getElementById('toggleChatbotButton');
+
+//   toggleChatbotButton.addEventListener('click', function() {
+//       chatbotWidget.style.display = chatbotWidget.style.display === 'none' ? 'block' : 'none';
+//   });
+
+//   const chatHistory = [];
+//   const synth = window.speechSynthesis;
+//   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+//   const recognition = new SpeechRecognition();
+//   let recognitionStartedByButton = false;
+
+//   recognition.lang = 'en-US';
+
+//   recognition.onresult = function(event) {
+//       if (!recognitionStartedByButton) {
+//           return; // Ignore the result if recognition wasn't started by the button
+//       }
+
+//       const userInput = event.results[0][0].transcript;
+//       const chatContainer = document.getElementById("chat");
+//       const userMessage = `<div><strong>You:</strong> ${userInput}</div>`;
+//       chatContainer.innerHTML += userMessage;
+
+//       // Add user input to chat history
+//       chatHistory.push(userInput);
+
+//       // Process user input
+//       const botResponse = getBotResponse(userInput);
+//       const botMessage = `<div><strong>Bot:</strong> ${botResponse}</div>`;
+//       chatContainer.innerHTML += botMessage;
+
+//       // Speak the bot response
+//       speak(botResponse);
+
+//       // Reset the flag after processing the input
+//       recognitionStartedByButton = false;
+//   };
+
+//   document.getElementById('voiceButton').addEventListener('click', function() {
+//       recognitionStartedByButton = true;
+//       recognition.start();
+//   });
+
+//   function sendMessage() {
+//       const userInput = document.getElementById("userInput").value;
+//       const chatContainer = document.getElementById("chat");
+//       const userMessage = `<div><strong>You:</strong> ${userInput}</div>`;
+//       chatContainer.innerHTML += userMessage;
+
+//       // Add user input to chat history
+//       chatHistory.push(userInput);
+
+//       // Set the flag to false to prevent speaking
+//       recognitionStartedByButton = false;
+
+//       // Process user input
+//       const botResponse = getBotResponse(userInput);
+//       const botMessage = `<div><strong>Bot:</strong> ${botResponse}</div>`;
+//       chatContainer.innerHTML += botMessage;
+//   }
+
+//   function getBotResponse(userInput) {
+//       // Bot response logic remains the same
+//   }
+
+//   function speak(text) {
+//       const utterance = new SpeechSynthesisUtterance(text);
+//       synth.speak(utterance);
+//   }
+
+//   recognition.onstart = function() {
+//       document.getElementById("recognising").style.display = "block";
+//   };
+
+//   recognition.onend = function() {
+//       document.getElementById("recognising").style.display = "none";
+//   };
+// }
+
+// initFloatingChatbot(); // Initialize the floating chatbot
+
+
+
+
+
+
+
 
 
 

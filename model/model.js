@@ -32,21 +32,6 @@ export const empCollection = mongoose.model('empcollection', empSchema);
 
 
 
-// //for collection
-// const facSchema = new mongoose.Schema({
-//   name: {
-//     type: String,
-//     required: true,
-//   },
-//   email: {
-//     type: String,
-//     unique: true,
-//     required: true,
-//   },
-// });
-
-// export const facCollection = mongoose.model('faccollection', facSchema);
-
 
 
 //For facillity collection centres

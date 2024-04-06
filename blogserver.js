@@ -8,27 +8,27 @@ const port = 4000;
 let posts = [
   {
     id: 1,
-    title: "The Rise of Decentralized Finance",
+    title: "Understanding E-Waste: A Growing Environmental Concern",
     content:
-      "Decentralized Finance (DeFi) is an emerging and rapidly evolving field in the blockchain industry. It refers to the shift from traditional, centralized financial systems to peer-to-peer finance enabled by decentralized technologies built on Ethereum and other blockchains. With the promise of reduced dependency on the traditional banking sector, DeFi platforms offer a wide range of services, from lending and borrowing to insurance and trading.",
-    author: "Alex Thompson",
-    date: "2023-08-01T10:00:00Z",
+      "As technology advances, so does the volume of electronic waste (e-waste) generated globally. It's crucial to understand what constitutes e-waste and how improper disposal can harm the environment and human health. Learn about sustainable disposal practices and the importance of recycling electronics to mitigate these impacts.",
+    author: "Vedant Patil",
+    date: "2024-04-02T10:00:00Z",
   },
   {
     id: 2,
-    title: "The Impact of Artificial Intelligence on Modern Businesses",
+    title: "The Journey of E-Waste: From Collection to Recycling",
     content:
-      "Artificial Intelligence (AI) is no longer a concept of the future. It's very much a part of our present, reshaping industries and enhancing the capabilities of existing systems. From automating routine tasks to offering intelligent insights, AI is proving to be a boon for businesses. With advancements in machine learning and deep learning, businesses can now address previously insurmountable problems and tap into new opportunities.",
-    author: "Mia Williams",
-    date: "2023-08-05T14:30:00Z",
+      "E-waste management involves a series of crucial steps, from collection to recycling. Discover the intricate process of how electronic devices are dismantled, sorted, and recycled to recover valuable materials while minimizing environmental pollution and health risks associated with improper disposal.",
+    author: "Sam Williams",
+    date: "2023-04-03T14:30:00Z",
   },
   {
     id: 3,
-    title: "Sustainable Living: Tips for an Eco-Friendly Lifestyle",
+    title: "E-Waste Recycling: A Step Towards Sustainable Living",
     content:
-      "Sustainability is more than just a buzzword; it's a way of life. As the effects of climate change become more pronounced, there's a growing realization about the need to live sustainably. From reducing waste and conserving energy to supporting eco-friendly products, there are numerous ways we can make our daily lives more environmentally friendly. This post will explore practical tips and habits that can make a significant difference.",
-    author: "Samuel Green",
-    date: "2023-08-10T09:15:00Z",
+      "Recycling e-waste not only conserves natural resources but also reduces energy consumption and greenhouse gas emissions. By opting for responsible disposal methods, individuals can contribute to a more sustainable future. Explore the benefits of e-waste recycling and how everyone can play a part in reducing electronic waste.",
+    author: "Ankita Patil",
+    date: "2023-04-04T09:15:00Z",
   },
 ];
 
@@ -91,12 +91,7 @@ app.delete("/posts/:id", (req, res) => {
 });
 
 
-
-
-
-
-
-
+ 
 
 app.listen(port, () => {
   console.log(`API is running at http://localhost:${port}`);
