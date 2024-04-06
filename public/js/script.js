@@ -29,7 +29,7 @@ let map;
           { name: "Threco Recycling LLP", lat: 18.972200, lon: 73.438300, lnk: "https://maps.app.goo.gl/iyo5e8KQqFTzs66g6" },
           { name: "WE-The Recycling Company", lat: 19.336020, lon: 73.066380, lnk: "https://maps.app.goo.gl/iyo5e8KQqFTzs66g6" },
           { name: "ECO Friend Industries", lat: 19.085900, lon: 73.024900, lnk: "https://maps.app.goo.gl/iyo5e8KQqFTzs66g6" },
-          { name: "A. S. ENTERPRISES", lat: 19.067110, lon: 72.901550, lnk: "https://maps.app.goo.gl/iyo5e8KQqFTzs66g6" },
+          { name: "A. S. ENTERPRISES", lat: 19.067110, lon: 72.901550, lnk: "https://maps.app.goo.gl/iwiaqq5zwGqqXqQx9" },
           { name: "AG Enterprises", lat: 18.703330, lon: 73.787020, lnk: "https://maps.app.goo.gl/iyo5e8KQqFTzs66g6" },
           { name: "Alfa Trading Co", lat: 19.106809, lon:72.892686, lnk: "https://maps.app.goo.gl/iyo5e8KQqFTzs66g6" },
           { name: "Aman Trading Co", lat: 19.092890, lon: 72.882780, lnk: "https://maps.app.goo.gl/iyo5e8KQqFTzs66g6" },

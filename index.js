@@ -621,15 +621,7 @@ app.post("/feedback", async(req, res) => {
  
 });
 
-
-
-
-
-//blog app
-
-
-
-
+ 
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

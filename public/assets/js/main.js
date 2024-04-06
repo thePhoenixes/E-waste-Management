@@ -1,10 +1,4 @@
-/**
-* Template Name: Impact
-* Updated: Jul 27 2023 with Bootstrap v5.3.1
-* Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 document.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
@@ -316,9 +310,21 @@ setInterval(rotateQuote, 5000);
 
 
 
-// price predictor
 
-function calculatePrice() {
+
+
+
+
+
+
+
+
+
+
+
+// Price predictor model
+
+/*function calculatePrice() {
   const age = parseInt(document.getElementById('age').value);
   const purchasePrice = parseInt(document.getElementById('purchasePrice').value);
   const quality = parseInt(document.getElementById('quality').value);
@@ -330,30 +336,9 @@ function calculatePrice() {
   }
 
   let basePrice = 0;
+ 
 
-//   if (age <= 2) {
-//       basePrice = purchasePrice * 0.4; // 40% of purchase price for devices less than or equal to 2 years old
-//   } 
-//   else if (age <= 5) {
-//       basePrice = purchasePrice * 0.3; // 30% of purchase price for devices between 2 and 5 years old
-//   } 
-
-//   else if (age <=7) {
-//     basePrice = purchasePrice * 0.28; // 30% of purchase price for devices between 2 and 5 years old
-// } 
-// else if (age <= 8) {
-//   basePrice = purchasePrice * 0.25; // 30% of purchase price for devices between 2 and 5 years old
-// }
-// else if (age <= 9) {
-//   basePrice = purchasePrice * 0.22; // 30% of purchase price for devices between 2 and 5 years old
-// } 
-
-
-//   else {
-//       basePrice = purchasePrice * 0.2; // 20% of purchase price for devices older than 5 years
-//   }
-
-basePrice = purchasePrice / age;
+  basePrice = purchasePrice / age;
 
 
   let qualityMultiplier = 0;
@@ -399,6 +384,114 @@ basePrice = purchasePrice / age;
   let maxPrice = basePrice * (qualityMultiplier + damagesMultiplier);
 
   document.getElementById('priceRange').innerText = `Estimated Price Range: INR ${minPrice.toFixed(2)} - INR ${maxPrice.toFixed(2)}`;
+}*/
+
+
+
+
+
+function calculatePrice() {
+  const age = parseInt(document.getElementById('age').value);
+  const purchasePrice = parseInt(document.getElementById('purchasePrice').value);
+  const quality = parseInt(document.getElementById('quality').value);
+  const damages = parseInt(document.getElementById('damages').value);
+  const brand = document.getElementById('brand').value.toLowerCase(); // Get brand and convert to lowercase
+  const model = document.getElementById('Model').value.toLowerCase(); // Get model and convert to lowercase
+
+  if (purchasePrice < 0 || purchasePrice > 9999999) {
+      alert("Please enter a purchase price between 0 and 9,999,999.");
+      return;
+  }
+
+  let basePrice = 0;
+  basePrice = purchasePrice / age;
+
+  let qualityMultiplier = 0;
+  let damagesMultiplier = 0;
+  let brandMultiplier = 0;
+  let modelMultiplier = 0;
+
+  // Set multipliers based on quality
+  switch (quality) {
+      case 1:
+          qualityMultiplier = 0.2;
+          break;
+      case 2:
+          qualityMultiplier = 0.4;
+          break;
+      case 3:
+          qualityMultiplier = 0.6;
+          break;
+      case 4:
+          qualityMultiplier = 0.8;
+          break;
+      case 5:
+          qualityMultiplier = 1;
+          break;
+  }
+
+  // Set multipliers based on damages
+  switch (damages) {
+      case 1:
+          damagesMultiplier = 1;
+          break;
+      case 2:
+          damagesMultiplier = 0.8;
+          break;
+      case 3:
+          damagesMultiplier = 0.6;
+          break;
+      case 4:
+          damagesMultiplier = 0.4;
+          break;
+      case 5:
+          damagesMultiplier = 0.2;
+          break;
+  }
+
+  // Set multipliers based on brand
+  switch (brand) {
+      case 'apple':
+          brandMultiplier = 1.2;
+          break;
+      case 'oppo':
+          brandMultiplier = 1.1;
+          break;
+      case 'lenevo':
+          brandMultiplier = 1.05;
+          break;
+      case 'samsung':
+          brandMultiplier = 1.15;
+          break;
+      default:
+          brandMultiplier = 1; // Default multiplier for other brands
+          break;
+  }
+
+  // Set multipliers based on model
+  switch (model) {
+      case 'model1':
+          modelMultiplier = 1.2;
+          break;
+      case 'model2':
+          modelMultiplier = 1.1;
+          break;
+      case 'model3':
+          modelMultiplier = 1.05;
+          break;
+      case 'model4':
+          modelMultiplier = 1.15;
+          break;
+      default:
+          modelMultiplier = 1; // Default multiplier for other models
+          break;
+  }
+
+  // Calculate price range using all multipliers
+  let minPrice = basePrice * qualityMultiplier * damagesMultiplier * brandMultiplier * modelMultiplier;
+  let maxPrice = Math.min(basePrice * (qualityMultiplier + damagesMultiplier) * brandMultiplier * modelMultiplier, purchasePrice);
+
+  document.getElementById('priceRange').innerText = `Estimated Price Range: INR ${minPrice.toFixed(2)} - INR ${maxPrice.toFixed(2)}`;
 }
 
 
@@ -408,10 +501,14 @@ basePrice = purchasePrice / age;
 
 
 
-//chatbot
 
 
 
+
+
+
+//Voice assistant chatbot
+ 
 const chatHistory = [];
 const synth = window.speechSynthesis;
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -613,6 +710,17 @@ recognition.onend = function() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+/*Prediction model using dataset*/ 
 
 async function predictCost() {
   const age = document.getElementById('age').value;
